@@ -1,0 +1,264 @@
+{
+	"info": {
+		"_postman_id": "a8b9c0d1-e2f3-4g5h-6i7j-8k9l0m1n2o3p",
+		"name": "Password Strength Checker",
+		"description": "API untuk mengecek kekuatan password",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Password Strength",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\": \"Password123!\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/password/check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"password",
+						"check"
+					]
+				},
+				"description": "Endpoint untuk mengecek kekuatan password"
+			},
+			"response": [
+				{
+					"name": "Strong Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Password123!\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/password/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"password",
+								"check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": {
+						"status": "success",
+						"data": {
+							"strengthLevel": 3,
+							"strengthName": "strong",
+							"message": "Password kuat",
+							"analysis": {
+								"hasMinLength": true,
+								"hasUpperCase": true,
+								"hasLowerCase": true,
+								"hasNumbers": true,
+								"hasSpecialChars": true,
+								"criteriaCount": 5
+							},
+							"missingRequirements": []
+						}
+					}
+				},
+				{
+					"name": "Medium Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"Password123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/password/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"password",
+								"check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": {
+						"status": "success",
+						"data": {
+							"strengthLevel": 2,
+							"strengthName": "medium",
+							"message": "Password sedang",
+							"analysis": {
+								"hasMinLength": true,
+								"hasUpperCase": true,
+								"hasLowerCase": true,
+								"hasNumbers": true,
+								"hasSpecialChars": false,
+								"criteriaCount": 3
+							},
+							"missingRequirements": [
+								"Minimal 1 karakter spesial"
+							]
+						}
+					}
+				},
+				{
+					"name": "Weak Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"pass123\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/password/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"password",
+								"check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": {
+						"status": "success",
+						"data": {
+							"strengthLevel": 1,
+							"strengthName": "weak",
+							"message": "Password lemah",
+							"analysis": {
+								"hasMinLength": false,
+								"hasUpperCase": false,
+								"hasLowerCase": true,
+								"hasNumbers": true,
+								"hasSpecialChars": false,
+								"criteriaCount": 2
+							},
+							"missingRequirements": [
+								"Minimal 8 karakter",
+								"Minimal 1 huruf besar",
+								"Minimal 1 karakter spesial"
+							]
+						}
+					}
+				},
+				{
+					"name": "Empty Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/password/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"password",
+								"check"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": {
+						"status": "error",
+						"message": "Password tidak boleh kosong"
+					}
+				}
+			]
+		}
+	]
+}
